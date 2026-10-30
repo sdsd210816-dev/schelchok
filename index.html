@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Стол «Щелчок» из берёзовой фанеры — собирается за 10 секунд без инструментов. Съёмные ножки хранятся под столешницей.">
+  <title>Щелчок — стол, который собирается за 10 секунд</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800;900&family=Onest:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --wood-950: #1b100b;
+      --wood-900: #271711;
+      --wood-800: #382118;
+      --wood-700: #53301f;
+      --amber: #ffae00;
+      --amber-bright: #ffc33d;
+      --orange: #e85d21;
+      --ink: #201813;
+      --muted: #695d55;
+      --paper: #fffdfa;
+      --paper-deep: #f4eee7;
+      --line: #ded4ca;
+      --white: #ffffff;
+      --radius-sm: 14px;
+      --radius-md: 24px;
+      --radius-lg: 36px;
+      --shadow: 0 20px 60px rgba(39, 23, 17, 0.13);
+      --container: 1180px;
+      --font-display: 'Unbounded', 'Inter', system-ui, sans-serif;
+      --font-body: 'Onest', 'Inter', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, input, textarea { font: inherit; }
+
+    .container {
+      width: min(var(--container), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      color: var(--orange);
+      font-size: 0.76rem;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 28px;
+      height: 3px;
+      content: "";
+      background: currentColor;
+      border-radius: 10px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+    }
+
+    h3 {
+      font-family: var(--font-body);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    h1 {
+      max-width: 980px;
+      margin-bottom: 30px;
+      font-size: clamp(1.9rem, 4.2vw, 4.2rem);
+    }
+
+    h2 {
+      max-width: 820px;
+      margin-bottom: 24px;
+      font-size: clamp(1.5rem, 3.4vw, 3.4rem);
+    }
+
+    h3 {
+      margin-bottom: 12px;
+      font-size: clamp(1.3rem, 1.9vw, 1.75rem);
+    }
+
+    .lead {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    }
+
+    .btn {
+      min-height: 56px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 23px;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible {
+      outline: 3px solid var(--amber-bright);
+      outline-offset: 3px;
+    }
+
+    .btn--primary {
+      color: var(--wood-950);
+      background: var(--amber);
+      box-shadow: 0 10px 30px rgba(255, 174, 0, 0.25);
+    }
+
+    .btn--primary:hover { background: var(--amber-bright); }
+
+    .btn--outline {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.48);
+      background: transparent;
+    }
+
+    .btn--outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .topbar {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      width: 100%;
+      color: var(--white);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .brand__mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: var(--wood-950);
+      background: var(--amber);
+      border-radius: 50% 50% 50% 10px;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      transform: rotate(-4deg);
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .nav__links a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+    }
+
+    .nav__links a:hover { color: var(--white); }
+
+    .nav__phone {
+      color: var(--white) !important;
+      padding-bottom: 3px;
+      border-bottom: 2px solid var(--amber);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 78% 26%, rgba(255,174,0,0.18), transparent 26%),
+        radial-gradient(circle at 20% 80%, rgba(232,93,33,0.10), transparent 30%),
+        linear-gradient(115deg, var(--wood-950) 0%, var(--wood-900) 54%, #432416 100%);
+      padding-top: 160px;
+      padding-bottom: 90px;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      opacity: 0.10;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(98deg, transparent 0, transparent 35px, rgba(255,255,255,.12) 36px, transparent 38px);
+      z-index: 1;
+    }
+
+    #pixel-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .hero > .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__copy {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      margin-bottom: 64px;
+    }
+
+    .hero h1 span { color: var(--amber); }
+
+    .hero__sub {
+      max-width: 720px;
+      margin-bottom: 32px;
+      color: rgba(255,255,255,0.72);
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+      font-weight: 500;
+    }
+
+    .hero__meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px 32px;
+      margin-bottom: 32px;
+    }
+
+    .price {
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .price-note {
+      max-width: 320px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero__wide {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+    }
+
+    .hero__wide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .media {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      background:
+        linear-gradient(135deg, rgba(255,174,0,.32), rgba(255,255,255,.04)),
+        #563120;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .media img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .media__fallback {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: rgba(255,255,255,.92);
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      text-align: center;
+    }
+
+    .section { padding: 120px 0; }
+
+    .video-wrap {
+      margin: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--wood-950);
+    }
+
+    .video-wrap video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .video-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .pain {
+      overflow: hidden;
+      background: var(--amber);
+    }
+
+    .pain__intro {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 70px;
+      align-items: end;
+      margin-bottom: 58px;
+    }
+
+    .pain .eyebrow { color: var(--wood-800); }
+    .pain h2 { margin-bottom: 0; }
+    .pain .lead { color: rgba(32,24,19,.76); }
+
+    .pain__cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .pain-card {
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px;
+      color: var(--white);
+      background: var(--wood-900);
+      border-radius: var(--radius-md);
+      transition: transform 180ms ease;
+    }
+
+    .pain-card:hover { transform: translateY(-5px) rotate(-.4deg); }
+
+    .pain-card__number {
+      color: var(--amber);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+    }
+
+    .pain-card p {
+      margin-bottom: 0;
+      color: rgba(255,255,255,.68);
+    }
+
+    .how { background: var(--paper); }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 58px;
+    }
+
+    .section-head h2 { margin-bottom: 0; }
+
+    .section-head__note {
+      max-width: 320px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .how__grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      align-items: center;
+      gap: 22px;
+      padding: 25px;
+      background: var(--paper-deep);
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+    }
+
+    .step:hover { border-color: var(--amber); }
+
+    .step__number {
+      width: 64px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--wood-900);
+      border-radius: 50%;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .step h3 { margin-bottom: 5px; }
+    .step p { margin-bottom: 0; color: var(--muted); }
+
+    .materials {
+      color: var(--white);
+      background: var(--wood-900);
+    }
+
+    .materials .eyebrow { color: var(--amber); }
+    .materials .lead { color: rgba(255,255,255,.66); }
+
+    .material-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 58px;
+    }
+
+    .material-card {
+      padding: clamp(28px, 4vw, 50px);
+      border-radius: var(--radius-lg);
+    }
+
+    .material-card--ply {
+      color: var(--ink);
+      background: var(--amber);
+    }
+
+    .material-card--chip {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.055);
+    }
+
+    .material-card__label {
+      display: inline-block;
+      margin-bottom: 50px;
+      padding: 7px 12px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .checks {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      margin: 28px 0 0;
+      list-style: none;
+    }
+
+    .checks li {
+      position: relative;
+      padding-left: 31px;
+    }
+
+    .checks li::before {
+      position: absolute;
+      left: 0;
+      top: .15em;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      content: "✓";
+      color: var(--wood-950);
+      background: var(--amber);
+      border-radius: 50%;
+      font-size: .75rem;
+      font-weight: 800;
+    }
+
+    .material-card--ply .checks li::before {
+      color: var(--white);
+      background: var(--wood-900);
+    }
+
+    .mechanism-row {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+
+    .mechanism-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 38px;
+      color: var(--ink);
+      background: var(--white);
+      border-radius: var(--radius-lg);
+    }
+
+    .mechanism-copy__icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      margin-bottom: auto;
+      color: var(--wood-950);
+      background: var(--amber);
+      border-radius: 50% 50% 50% 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+
+    .mechanism-copy p { margin-bottom: 0; color: var(--muted); }
+
+    .oil { background: var(--paper-deep); }
+
+    .oil__grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: clamp(34px, 7vw, 90px);
+      align-items: center;
+    }
+
+    .recipe {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 30px 0;
+    }
+
+    .recipe span {
+      padding: 10px 14px;
+      color: var(--wood-800);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .oil__note {
+      padding: 22px 24px;
+      margin-top: 28px;
+      border-left: 5px solid var(--amber);
+      background: var(--white);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-weight: 700;
+    }
+
+    .engraving { background: var(--paper); }
+
+    .engraving__box {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(34px, 6vw, 70px);
+      padding: clamp(34px, 6vw, 80px);
+      color: var(--white);
+      background: var(--orange);
+      border-radius: var(--radius-lg);
+      align-items: center;
+    }
+
+    .engraving__box::after {
+      position: absolute;
+      right: -100px;
+      bottom: -170px;
+      width: 430px;
+      aspect-ratio: 1;
+      content: "";
+      border: 80px solid rgba(255,255,255,.09);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .engraving__left { position: relative; z-index: 1; }
+    .engraving__box .eyebrow { color: var(--wood-950); }
+    .engraving__box h2 { font-size: clamp(1.6rem, 3vw, 3rem); }
+    .engraving__box p { color: rgba(255,255,255,.85); }
+
+    .engraving__media {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    }
+    .engraving__media img { width: 100%; height: auto; display: block; }
+
+    .engraving__prices {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .engraving-price {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 24px;
+      color: var(--ink);
+      background: var(--white);
+      border-radius: 16px;
+    }
+
+    .engraving-price strong:last-child {
+      white-space: nowrap;
+      font-size: 1.2rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+
+    .pricing { background: var(--paper-deep); }
+
+    .price-layout {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 24px;
+      align-items: start;
+      margin-top: 58px;
+    }
+
+    .price-list {
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+    }
+
+    .price-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      min-height: 100px;
+      padding: 22px 30px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .price-row:last-child { border-bottom: 0; }
+    .price-row:hover { background: #fff8e8; }
+
+    .price-row--group {
+      background: var(--paper-deep);
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--wood-800);
+      min-height: auto;
+      padding: 16px 30px;
+    }
+
+    .price-row--group:hover { background: var(--paper-deep); }
+
+    .price-row__name {
+      display: block;
+      font-weight: 700;
+    }
+
+    .price-row__note {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .price-row__price {
+      white-space: nowrap;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .modularity-note {
+      max-width: 820px;
+      margin-top: 48px;
+      padding: 28px 32px;
+      background: var(--white);
+      border-left: 6px solid var(--amber);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+    .modularity-note strong { color: var(--wood-800); }
+
+    .compare { background: var(--wood-950); color: var(--white); }
+    .compare .eyebrow { color: var(--amber); }
+    .compare h2 { color: var(--white); }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 58px;
+    }
+    .compare-card {
+      padding: clamp(28px, 4vw, 50px);
+      border-radius: var(--radius-lg);
+    }
+    .compare-card--ikea {
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.055);
+    }
+    .compare-card--snap {
+      color: var(--ink);
+      background: var(--amber);
+    }
+    .compare-label {
+      display: inline-block;
+      margin-bottom: 40px;
+      padding: 7px 12px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .compare-list {
+      display: grid;
+      gap: 16px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-size: 1.02rem;
+    }
+    .compare-list li {
+      padding-left: 28px;
+      position: relative;
+    }
+    .compare-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      opacity: .45;
+    }
+    .compare-card--ikea .compare-list li { color: rgba(255,255,255,.65); }
+    .compare-card--snap .compare-list li { font-weight: 700; }
+    .compare-card--snap .compare-list li::before {
+      content: "→";
+      opacity: .9;
+      color: var(--wood-900);
+    }
+
+    .faq { background: var(--paper); }
+    .faq__list {
+      display: grid;
+      gap: 12px;
+      max-width: 920px;
+    }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 24px 30px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.02rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--orange);
+      flex-shrink: 0;
+      line-height: 1;
+      transition: transform 200ms ease;
+    }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item__body {
+      padding: 0 30px 26px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .faq-item__body p { margin-bottom: 12px; }
+    .faq-item__body p:last-child { margin-bottom: 0; }
+    .faq-item__body strong { color: var(--ink); }
+
+    .dark-end {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--wood-950);
+    }
+
+    .dark-end::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      opacity: .12;
+      pointer-events: none;
+      background: radial-gradient(circle at 80% 35%, var(--amber), transparent 25%);
+    }
+
+    .trust {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      padding-top: 105px;
+    }
+
+    .trust-card {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 34px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,.045);
+    }
+
+    .trust-card__icon {
+      width: 70px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      color: var(--wood-950);
+      background: var(--amber);
+      border-radius: 20px;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      transform: rotate(-2deg);
+    }
+
+    .trust-card h3 { margin-bottom: 7px; }
+    .trust-card p { margin-bottom: 0; color: rgba(255,255,255,.61); }
+
+    .contact {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: clamp(44px, 8vw, 110px);
+      align-items: start;
+      padding-top: 115px;
+      padding-bottom: 76px;
+    }
+
+    .contact .eyebrow { color: var(--amber); }
+    .contact h2 { font-size: clamp(1.7rem, 4vw, 4rem); }
+    .contact__text { color: rgba(255,255,255,.65); }
+
+    .contact__phone {
+      display: inline-block;
+      margin-top: 25px;
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2.3vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-decoration-color: var(--amber);
+      text-decoration-thickness: 3px;
+      text-underline-offset: 7px;
+    }
+
+    .form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: clamp(25px, 4vw, 42px);
+      color: var(--ink);
+      background: var(--white);
+      border-radius: var(--radius-lg);
+    }
+
+    .field { display: grid; gap: 8px; }
+    .field--full { grid-column: 1 / -1; }
+
+    .field label {
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .field input, .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    .field input { height: 56px; padding: 0 16px; }
+    .field textarea { min-height: 136px; padding: 15px 16px; resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: #9a8e86; }
+    .field input:focus, .field textarea:focus { border-color: var(--orange); }
+    .form .btn { grid-column: 1 / -1; width: 100%; margin-top: 5px; border: 0; }
+
+    .form__consent {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: var(--muted);
+      font-size: .74rem;
+      text-align: center;
+    }
+
+    .final-cta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 38px 0;
+      border-top: 1px solid rgba(255,255,255,.14);
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+
+    .final-cta__label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.4vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .pulse {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+      background: var(--amber);
+      border-radius: 50%;
+      box-shadow: 0 0 0 8px rgba(255,174,0,.13);
+    }
+
+    .footer {
+      position: relative;
+      z-index: 1;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(255,255,255,.45);
+      font-size: .82rem;
+    }
+
+    .footer a { color: rgba(255,255,255,.65); }
+
+    @media (max-width: 980px) {
+      .nav__links a:not(.nav__phone) { display: none; }
+      .pain__intro, .oil__grid, .engraving__box, .price-layout, .contact,
+      .compare-grid { grid-template-columns: 1fr; }
+      .how__grid { grid-template-columns: 1fr; }
+      .how .media { order: -1; }
+      .mechanism-row { grid-template-columns: 1fr; }
+      .mechanism-copy { min-height: 330px; }
+      .contact__copy { max-width: 720px; }
+    }
+
+    @media (max-width: 740px) {
+      body { font-size: 16px; }
+      .container { width: min(100% - 30px, var(--container)); }
+      .section { padding: 82px 0; }
+      .nav { min-height: 72px; }
+      .nav__phone { display: none; }
+      .hero { padding-top: 115px; padding-bottom: 60px; }
+      .hero__copy { margin-bottom: 40px; }
+      .hero__sub { font-size: 1rem; }
+      .hero__wide { border-radius: 25px; }
+      .pain__intro { gap: 22px; margin-bottom: 38px; }
+      .pain__cards { grid-template-columns: 1fr; }
+      .pain-card { min-height: 220px; }
+      .section-head { display: block; margin-bottom: 36px; }
+      .section-head__note { margin-top: 20px; }
+      .step { grid-template-columns: 58px 1fr; gap: 15px; padding: 20px; }
+      .step__number { width: 54px; }
+      .material-grid, .trust { grid-template-columns: 1fr; }
+      .material-card__label { margin-bottom: 32px; }
+      .engraving__box { gap: 28px; }
+      .engraving-price { padding: 18px 20px; }
+      .price-row { min-height: 88px; padding: 20px; }
+      .modularity-note { padding: 22px 24px; }
+      .compare-label { margin-bottom: 28px; }
+      .faq-item summary { padding: 20px 22px; font-size: 1rem; }
+      .faq-item__body { padding: 0 22px 22px; }
+      .trust { padding-top: 76px; }
+      .trust-card { grid-template-columns: 58px 1fr; padding: 24px; }
+      .trust-card__icon { width: 58px; border-radius: 16px; }
+      .contact { padding-top: 84px; padding-bottom: 60px; }
+      .form { grid-template-columns: 1fr; }
+      .field--full, .form .btn, .form__consent { grid-column: auto; }
+      .final-cta { align-items: flex-start; flex-direction: column; }
+      .footer { align-items: flex-start; flex-direction: column; padding: 28px 0; }
+    }
+
+    @media (max-width: 430px) {
+      .hero__actions .btn { width: 100%; }
+      .price-row { grid-template-columns: 1fr; gap: 8px; }
+      .engraving-price { align-items: flex-start; flex-direction: column; gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+      #pixel-canvas { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Щелчок — на главную">
+        <span class="brand__mark">Щ</span>
+        <span>Щелчок</span>
+      </a>
+      <nav class="nav__links" aria-label="Основная навигация">
+        <a href="#how">Как работает</a>
+        <a href="#video">Видео</a>
+        <a href="#materials">Материалы</a>
+        <a href="#prices">Цены</a>
+        <a href="#faq">Вопросы</a>
+        <a class="nav__phone" href="tel:+79009718292">+7 900 971-82-92</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <canvas id="pixel-canvas" aria-hidden="true"></canvas>
+      <div class="container">
+        <div class="hero__copy">
+          <p class="eyebrow">Мебель для подвижной жизни</p>
+          <h1>Стол, который собирается за <span>10 секунд.</span> Без инструментов.</h1>
+          <p class="hero__sub">Съёмные ножки защёлкиваются в столешницу, а при переезде прячутся прямо под ней. Крепко стоит. Легко едет.</p>
+          <div class="hero__meta">
+            <div class="price">от 13 000 ₽</div>
+            <div class="price-note">1480 × 700 × 750 мм. Берёзовая фанера. Сделано в России.</div>
+          </div>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#contact">Оставить заявку →</a>
+            <a class="btn btn--outline" href="tel:+79009718292">Позвонить</a>
+          </div>
+        </div>
+        <figure class="hero__wide">
+          <img src="steps.jpg" alt="Три шага сборки стола: достать, вставить, защёлкнуть">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section pain" aria-labelledby="pain-title">
+      <div class="container">
+        <div class="pain__intro">
+          <div>
+            <p class="eyebrow">Знакомая история?</p>
+            <h2 id="pain-title">Места мало.<br>Жизнь меняется быстро.</h2>
+          </div>
+          <p class="lead">Обычная мебель будто рассчитана на одну квартиру навсегда. «Щелчок» — на реальную жизнь: с арендой, перестановками и внезапными переездами.</p>
+        </div>
+        <div class="pain__cards">
+          <article class="pain-card">
+            <span class="pain-card__number">01 / МАЛО МЕСТА</span>
+            <div>
+              <h3>Стол мешает, когда не нужен</h3>
+              <p>Снимите ножки и уберите плоскую столешницу к стене или под кровать.</p>
+            </div>
+          </article>
+          <article class="pain-card">
+            <span class="pain-card__number">02 / ПЕРЕЕЗД</span>
+            <div>
+              <h3>Мебель не влезает в машину</h3>
+              <p>Ножки хранятся под столешницей — компактно и без отдельной коробки.</p>
+            </div>
+          </article>
+          <article class="pain-card">
+            <span class="pain-card__number">03 / БЕЗ ИНСТРУМЕНТОВ</span>
+            <div>
+              <h3>Шестигранник снова потерялся</h3>
+              <p>Он не понадобится. Здесь нет болтов, ключей и часовой инструкции.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Просто до щелчка</p>
+            <h2 id="how-title">Три движения.<br>И стол готов.</h2>
+          </div>
+          <p class="section-head__note">Быстрее, чем закипит чайник. Понятно без инструкции.</p>
+        </div>
+        <div class="how__grid">
+          <div class="steps">
+            <article class="step">
+              <span class="step__number">1</span>
+              <div><h3>Достали</h3><p>Снимите ножки с креплений под столешницей.</p></div>
+            </article>
+            <article class="step">
+              <span class="step__number">2</span>
+              <div><h3>Вставили</h3><p>Совместите каждую ножку с посадочным пазом.</p></div>
+            </article>
+            <article class="step">
+              <span class="step__number">3</span>
+              <div><h3>Щёлкнули</h3><p>Зафиксируйте механизм. Всё — стол стоит крепко.</p></div>
+            </article>
+          </div>
+          <figure class="media">
+            <div class="media__fallback">Собранный стол</div>
+            <img src="hero.jpg" alt="Собранный стол «Щелчок» с деревянными ножками">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section video-section" id="video" aria-labelledby="video-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Как это сделано</p>
+            <h2 id="video-title">От фанерного листа<br>до готового стола</h2>
+          </div>
+          <p class="section-head__note">1 минута 48 секунд. Весь процесс: от листа фанеры до готового стола.</p>
+        </div>
+        <figure class="video-wrap">
+          <figure class="video-fallback"><img src="hero.jpg" alt="Стол «Щелчок» в собранном виде"><a class="btn btn--outline" href="https://vk.com/sadigovmebel" target="_blank" rel="noopener">Смотреть видео сборки во ВКонтакте</a></figure>
+        </figure>
+        <p class="video-note">Сборка, ЧПУ, ручная фрезеровка, шлифовка и покрытие маслом — за 1:48.</p>
+      </div>
+    </section>
+
+    <section class="section materials" id="materials" aria-labelledby="materials-title">
+      <div class="container">
+        <p class="eyebrow">Честный материал</p>
+        <h2 id="materials-title">Почему фанера,<br>а не ДСП</h2>
+        <p class="lead">Берёзовая фанера прочная, ремонтопригодная и красивая на срезе. Её не нужно маскировать плёнкой под дерево — она уже дерево.</p>
+
+        <div class="material-grid">
+          <article class="material-card material-card--ply">
+            <span class="material-card__label">Берёзовая фанера</span>
+            <h3>Сделана, чтобы жить долго</h3>
+            <ul class="checks">
+              <li>Держит крепёж и не крошится по краям</li>
+              <li>Устойчива к нагрузкам и частой сборке</li>
+              <li>Красивый слоистый торец — часть дизайна</li>
+              <li>Можно обновить шлифовкой и маслом</li>
+            </ul>
+          </article>
+          <article class="material-card material-card--chip">
+            <span class="material-card__label">Обычная ДСП</span>
+            <h3>Выглядит ровно — до первого скола</h3>
+            <ul class="checks">
+              <li>Боится воды и разбухает на повреждениях</li>
+              <li>Крепёж хуже переносит повторную сборку</li>
+              <li>Скол сложно аккуратно восстановить</li>
+              <li>Торцы приходится закрывать кромкой</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="mechanism-row">
+          <figure class="media">
+            <div class="media__fallback">Механизм<br>«Щелчок»</div>
+            <img src="mechanism.jpg" alt="Крупный план механизма крепления ножек">
+          </figure>
+          <div class="mechanism-copy">
+            <div class="mechanism-copy__icon">10″</div>
+            <h3>Надёжный узел без лишней сложности</h3>
+            <p>Механизм рассчитан на регулярную сборку и разборку. Ножка входит точно в паз и фиксируется одним движением.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section oil" aria-labelledby="oil-title">
+      <div class="container oil__grid">
+        <figure class="media">
+          <div class="media__fallback">Ручное нанесение масла</div>
+          <img src="oil.jpg" alt="Мастер вручную наносит масло на фанерную столешницу">
+        </figure>
+        <div>
+          <p class="eyebrow">Финиш ручной работы</p>
+          <h2 id="oil-title">Масло, которое готовим сами</h2>
+          <p class="lead">Без пластикового лака и ощущения фабричной плёнки. Состав впитывается в дерево, подчёркивает рисунок и оставляет поверхность живой на ощупь.</p>
+          <div class="recipe" aria-label="Состав масла">
+            <span>Тунговое масло</span>
+            <span>Пчелиный воск</span>
+            <span>Эфирные масла</span>
+          </div>
+          <p class="oil__note">Наносим вручную в несколько слоёв и даём покрытию спокойно набрать прочность.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section engraving" aria-labelledby="engraving-title">
+      <div class="container">
+        <div class="engraving__box">
+          <div class="engraving__left">
+            <p class="eyebrow">Сделайте своим</p>
+            <h2 id="engraving-title">Гравировка по вашему эскизу</h2>
+            <p>Имя, семейный знак, важная дата или рисунок. Нанесём на столешницу и, если хотите, заполним цветной эпоксидной смолой. Уже дарили такой стол начальнику КФХ — остался в восторге.</p>
+            <div class="engraving__prices">
+              <div class="engraving-price"><strong>Гравировка</strong><strong>+2 500 ₽</strong></div>
+              <div class="engraving-price"><strong>С эпоксидной смолой</strong><strong>+5 000 ₽</strong></div>
+            </div>
+          </div>
+          <figure class="engraving__media">
+            <img src="engraving.jpg" alt="Гравировка на столешнице с заливкой эпоксидной смолой">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing" id="prices" aria-labelledby="prices-title">
+      <div class="container">
+        <p class="eyebrow">Линейка и цены</p>
+        <h2 id="prices-title">Выберите свой<br>«Щелчок»</h2>
+        <p class="lead">Стол, журнальная версия или компактные табуреты — всё в одной честной конструкции и с ручной отделкой.</p>
+
+        <div class="price-layout">
+          <figure class="media">
+            <div class="media__fallback">Вся линейка<br>«Щелчок»</div>
+            <img src="lineup.jpg" alt="Линейка столов и табуретов «Щелчок»">
+          </figure>
+          <div class="price-list" role="table" aria-label="Цены на мебель">
+            <div class="price-row price-row--group" role="row">Мебель</div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Стол базовый</span><span class="price-row__note">1480 × 700 × 750 мм, ножки с натуральной отделкой</span></div>
+              <span class="price-row__price">13 000 ₽</span>
+            </div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Стол с эмалевыми ножками</span><span class="price-row__note">Цвет ножек на выбор</span></div>
+              <span class="price-row__price">15 000 ₽</span>
+            </div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Журнальный стол</span><span class="price-row__note">Компактная низкая версия</span></div>
+              <span class="price-row__price">5 500 ₽</span>
+            </div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Табурет дерево</span><span class="price-row__note">Натуральное покрытие, 3 опоры</span></div>
+              <span class="price-row__price">1 000 ₽</span>
+            </div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Табурет эмаль</span><span class="price-row__note">Цвет на выбор, 3 опоры</span></div>
+              <span class="price-row__price">2 500 ₽</span>
+            </div>
+
+            <div class="price-row price-row--group" role="row">Комплекты ножек отдельно</div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Для большого стола</span><span class="price-row__note">4 опоры, дерево без эмали</span></div>
+              <span class="price-row__price">3 000 ₽</span>
+            </div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Для большого стола</span><span class="price-row__note">4 опоры, с эмалью, цвет на выбор</span></div>
+              <span class="price-row__price">5 000 ₽</span>
+            </div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Для журнального стола</span><span class="price-row__note">4 опоры, дерево без эмали</span></div>
+              <span class="price-row__price">1 500 ₽</span>
+            </div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Для журнального стола</span><span class="price-row__note">4 опоры, с эмалью, цвет на выбор</span></div>
+              <span class="price-row__price">3 000 ₽</span>
+            </div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Для табурета</span><span class="price-row__note">3 опоры, дерево без эмали</span></div>
+              <span class="price-row__price">1 100 ₽</span>
+            </div>
+            <div class="price-row" role="row">
+              <div><span class="price-row__name">Для табурета</span><span class="price-row__note">3 опоры, с эмалью, цвет на выбор</span></div>
+              <span class="price-row__price">2 200 ₽</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="modularity-note">
+          <strong>Одна столешница — две высоты.</strong> Закажите большой стол и отдельный комплект коротких ножек — получите длинный журнальный стол. Меняются за 10 секунд, без инструментов.
+        </p>
+      </div>
+    </section>
+
+    <section class="section compare" aria-labelledby="compare-title">
+      <div class="container">
+        <p class="eyebrow">Сравните</p>
+        <h2 id="compare-title">Похожий стол в IKEA —<br>от 25 000 ₽. И он не складывается.</h2>
+        <div class="compare-grid">
+          <article class="compare-card compare-card--ikea">
+            <span class="compare-label">IKEA (аналог)</span>
+            <ul class="compare-list">
+              <li>25 000 ₽ и выше</li>
+              <li>ДСП и шпон</li>
+              <li>Отвёртка и инструкция</li>
+              <li>Не складывается</li>
+              <li>Заводской лак</li>
+            </ul>
+          </article>
+          <article class="compare-card compare-card--snap">
+            <span class="compare-label">«Щелчок»</span>
+            <ul class="compare-list">
+              <li>13 000 ₽</li>
+              <li>Берёзовая фанера 2/2</li>
+              <li>10 секунд без инструментов</li>
+              <li>Ножки прячутся внутрь</li>
+              <li>Ручное масло: тунг + воск</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <p class="eyebrow">Частые вопросы</p>
+        <h2 id="faq-title">Что обычно<br>спрашивают</h2>
+
+        <div class="faq__list" style="margin-top: 58px;">
+          <details class="faq-item">
+            <summary>Как заказать?</summary>
+            <div class="faq-item__body">
+              <p>Позвоните по номеру <strong>+7 900 971-82-92</strong> или напишите в MAX. Обсудим размер, цвет, отделку и гравировку. После подтверждения — приступаем к работе.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Сколько ждать заказ?</summary>
+            <div class="faq-item__body">
+              <p>Заготовки уже готовы, поэтому срок зависит от финальной обработки и доставки. Точный срок назовём при заказе — обычно это несколько дней на изготовление плюс время в пути.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно посмотреть вживую?</summary>
+            <div class="faq-item__body">
+              <p>Шоурума нет, но можно приехать в цех: <strong>Петелино, ул. Горького, 35</strong>. Покажем процесс, дадим потрогать стол руками.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как происходит оплата?</summary>
+            <div class="faq-item__body">
+              <p>Для столов — <strong>предоплата 50%</strong>, остаток при получении после осмотра. Для ножек и табуретов — полная оплата до отправки.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно вернуть, если не понравится?</summary>
+            <div class="faq-item__body">
+              <p>Стол делается под ваш заказ — размер, цвет, гравировка. Поэтому возврату не подлежит. Но если обнаружится производственный брак или несоответствие заказу — исправим или заменим за наш счёт.</p>
+              <p><strong>Перед отправкой присылаем фото и видео готового стола.</strong> Вы подтверждаете — мы отправляем.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Сборка сложная?</summary>
+            <div class="faq-item__body">
+              <p>Нет. Три движения: достали ножки, вставили в пазы, щёлкнули. Без инструментов и инструкции.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно купить одну опору?</summary>
+            <div class="faq-item__body">
+              <p>Да. Одна большая опора — <strong>750 ₽</strong> (дерево) или <strong>1 250 ₽</strong> (эмаль). Одна малая опора (для журнального стола и табурета) — <strong>375 ₽</strong> (дерево) или <strong>750 ₽</strong> (эмаль).</p>
+              <p>Но учтите: доставка одной опоры может стоить дороже самой опоры. Если сломалась по гарантии — заменим бесплатно.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Есть скидка для тех, кто уже купил стол?</summary>
+            <div class="faq-item__body">
+              <p>Да. На второй комплект ножек — <strong>скидка 15%</strong>. Меняйте высоту стола за 10 секунд, когда захотите.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-end" aria-labelledby="contact-title">
+      <div class="container trust">
+        <article class="trust-card">
+          <div class="trust-card__icon">2</div>
+          <div><h3>2 года гарантии</h3><p>На механизм крепления ножек. Сломалась ножка не по вашей вине — новый комплект и доставку берём на себя.</p></div>
+        </article>
+        <article class="trust-card">
+          <div class="trust-card__icon">→</div>
+          <div><h3>Доставка по России</h3><p>Отправляем транспортными компаниями СДЭК и ПЭК в ваш город.</p></div>
+        </article>
+      </div>
+
+      <div class="container contact" id="contact">
+        <div class="contact__copy">
+          <p class="eyebrow">Напишите нам</p>
+          <h2 id="contact-title">Обсудим ваш стол</h2>
+          <p class="contact__text">Расскажите, какой размер, цвет и отделка вам нужны. Ответим, уточним детали и рассчитаем доставку.</p>
+          <a class="contact__phone" href="tel:+79009718292">+7 900 971-82-92</a>
+        </div>
+
+        <form class="form" action="https://formspree.io/f/xwlpoppo" method="POST">
+          <input type="hidden" name="_subject" value="Новая заявка с сайта «Щелчок»">
+          <input type="hidden" name="_language" value="ru">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div class="field">
+            <label for="name">Ваше имя</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Например, Анна" required>
+          </div>
+          <div class="field">
+            <label for="phone">Телефон</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+          </div>
+          <div class="field field--full">
+            <label for="message">Сообщение</label>
+            <textarea id="message" name="message" placeholder="Размер, цвет ножек, город доставки…"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit">Отправить заявку →</button>
+          <p class="form__consent">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+        </form>
+      </div>
+
+      <div class="container final-cta">
+        <div class="final-cta__label"><span class="pulse"></span>Осталось 5 столов по стартовой цене</div>
+        <a class="btn btn--primary" href="#contact">Забронировать свой</a>
+      </div>
+
+      <footer class="container footer">
+        <a class="brand" href="#top"><span class="brand__mark">Щ</span><span>Щелчок</span></a>
+        <span>Мебель, которая легко меняет адрес.</span>
+        <span>© 2026 · Сделано в России</span>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById('pixel-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      // Определяем мобильное устройство
+      const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches
+                    || window.innerWidth < 740;
+
+      // --- Настройки (десктоп) ---
+      let CELL = 5;         // зерно
+      let GAP = 1;
+      let RADIUS = 10;      // радиус влияния в ячейках
+      let HIT = 0.55;
+      let DECAY = 0.033;    // ~0.5 сек затухания
+      let PUSH = 0.4;
+      let SPRING = 0.09;
+      let DAMPING = 0.82;
+      let MAX_OFFSET = 6;
+
+      // --- Настройки (мобильные) ---
+      if (isMobile) {
+        CELL = 8;           // крупнее зерно — легче
+        RADIUS = 7;         // меньше влияния
+        HIT = 0.55;
+        DECAY = 0.05;       // быстрее тает
+        PUSH = 0.4;
+        SPRING = 0.1;
+        DAMPING = 0.82;
+        MAX_OFFSET = 6;
+      }
+
+      let w = 0, h = 0, dpr = 1;
+      let cols = 0, rows = 0;
+
+      let eArr = null, oxArr = null, oyArr = null, vxArr = null, vyArr = null;
+      let active = new Set();
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = canvas.getBoundingClientRect();
+        w = rect.width;
+        h = rect.height;
+        canvas.width = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        cols = Math.ceil(w / CELL);
+        rows = Math.ceil(h / CELL);
+        const n = cols * rows;
+        eArr = new Float32Array(n);
+        oxArr = new Float32Array(n);
+        oyArr = new Float32Array(n);
+        vxArr = new Float32Array(n);
+        vyArr = new Float32Array(n);
+        active = new Set();
+      }
+
+      function pushAt(x, y) {
+        const cx = Math.floor(x / CELL);
+        const cy = Math.floor(y / CELL);
+        const R2 = RADIUS * RADIUS;
+
+        for (let dy = -RADIUS; dy <= RADIUS; dy++) {
+          const ny = cy + dy;
+          if (ny < 0 || ny >= rows) continue;
+          for (let dx = -RADIUS; dx <= RADIUS; dx++) {
+            const nx = cx + dx;
+            if (nx < 0 || nx >= cols) continue;
+            const d2 = dx * dx + dy * dy;
+            if (d2 > R2) continue;
+
+            const dist = Math.sqrt(d2) || 1;
+            const falloff = 1 - dist / RADIUS;
+            const idx = ny * cols + nx;
+
+            eArr[idx] = Math.min(1, eArr[idx] + HIT * falloff);
+
+            const push = PUSH * falloff * falloff;
+            const hx = nx * CELL;
+            const hy = ny * CELL;
+            const ddx = hx - x;
+            const ddy = hy - y;
+            const dlen = Math.sqrt(ddx * ddx + ddy * ddy) || 1;
+            vxArr[idx] += (ddx / dlen) * push;
+            vyArr[idx] += (ddy / dlen) * push;
+
+            active.add(idx);
+          }
+        }
+      }
+
+      function onMove(clientX, clientY) {
+        const rect = canvas.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+        if (x < 0 || y < 0 || x > w || y > h) return;
+        pushAt(x, y);
+      }
+
+      // Мышь
+      window.addEventListener('mousemove', function (e) {
+        onMove(e.clientX, e.clientY);
+      }, { passive: true });
+
+      // Палец
+      window.addEventListener('touchmove', function (e) {
+        if (e.touches && e.touches[0]) {
+          onMove(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: true });
+
+      // Тап — одиночное касание тоже даёт вспышку
+      window.addEventListener('touchstart', function (e) {
+        if (e.touches && e.touches[0]) {
+          onMove(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: true });
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+
+        if (active.size > 0) {
+          const toDelete = [];
+
+          for (const idx of active) {
+            let ox = oxArr[idx];
+            let oy = oyArr[idx];
+            let vx = vxArr[idx];
+            let vy = vyArr[idx];
+
+            vx -= ox * SPRING;
+            vy -= oy * SPRING;
+            vx *= DAMPING;
+            vy *= DAMPING;
+            ox += vx;
+            oy += vy;
+
+            const osq = ox * ox + oy * oy;
+            if (osq > MAX_OFFSET * MAX_OFFSET) {
+              const scale = MAX_OFFSET / Math.sqrt(osq);
+              ox *= scale;
+              oy *= scale;
+            }
+
+            oxArr[idx] = ox;
+            oyArr[idx] = oy;
+            vxArr[idx] = vx;
+            vyArr[idx] = vy;
+
+            let e = eArr[idx];
+            e -= DECAY;
+            if (e < 0) e = 0;
+            eArr[idx] = e;
+
+            const speed2 = vx * vx + vy * vy;
+            const off2 = ox * ox + oy * oy;
+            if (e <= 0.015 && speed2 < 0.001 && off2 < 0.01) {
+              toDelete.push(idx);
+              continue;
+            }
+
+            const cx = idx % cols;
+            const cy = (idx - cx) / cols;
+            const hx = cx * CELL + GAP * 0.5;
+            const hy = cy * CELL + GAP * 0.5;
+            const px = hx + ox;
+            const py = hy + oy;
+            const size = CELL - GAP;
+
+            const g = 175 + Math.floor(e * 50);
+            const b = 90 - Math.floor(e * 50);
+            const alpha = e * 0.72;
+
+            ctx.fillStyle = 'rgba(255,' + g + ',' + b + ',' + alpha + ')';
+            ctx.fillRect(px, py, size, size);
+          }
+
+          for (let i = 0; i < toDelete.length; i++) {
+            const idx = toDelete[i];
+            active.delete(idx);
+            eArr[idx] = 0;
+            oxArr[idx] = 0;
+            oyArr[idx] = 0;
+            vxArr[idx] = 0;
+            vyArr[idx] = 0;
+          }
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', resize);
+
+      if (document.readyState === 'complete') {
+        resize();
+      } else {
+        window.addEventListener('load', resize);
+      }
+      draw();
+    })();
+  </script>
+</body>
+</html>
