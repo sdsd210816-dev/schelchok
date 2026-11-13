@@ -1234,12 +1234,16 @@
             <p class="eyebrow">Как это сделано</p>
             <h2 id="video-title">От фанерного листа<br>до готового стола</h2>
           </div>
-          <p class="section-head__note">1 минута 48 секунд. Весь процесс: от листа фанеры до готового стола.</p>
+          <p class="section-head__note">1 минута 44 секунды. Весь процесс: от листа фанеры до готового стола.</p>
         </div>
         <figure class="video-wrap">
-          <figure class="video-fallback"><img src="hero.jpg" alt="Стол «Щелчок» в собранном виде"><a class="btn btn--outline" href="https://vk.com/sadigovmebel" target="_blank" rel="noopener">Смотреть видео сборки во ВКонтакте</a></figure>
+          <video class="video-player" controls preload="none" playsinline width="1280" height="720"
+                 poster="video-poster.jpg" aria-label="Сборка стола «Щелчок»: от фанерного листа до готового стола">
+            <source src="video.mp4" type="video/mp4">
+            Ваш браузер не показывает видео — <a href="https://vk.com/sadigovmebel" target="_blank" rel="noopener">посмотреть во ВКонтакте</a>.
+          </video>
         </figure>
-        <p class="video-note">Сборка, ЧПУ, ручная фрезеровка, шлифовка и покрытие маслом — за 1:48.</p>
+        <p class="video-note">Сборка, ЧПУ, ручная фрезеровка, шлифовка и покрытие маслом — за 1:44.</p>
       </div>
     </section>
 
@@ -1768,6 +1772,20 @@
         var tg = t.closest ? t.closest('a[href*="t.me/"]') : null;
         if (tg) goal('click_tg');
       }, true);
+      // дошли ли до видео и стали ли смотреть
+      var vid = document.querySelector('video.video-player');
+      if (vid) {
+        vid.addEventListener('play', function once() { goal('video_play'); vid.removeEventListener('play', once); });
+        var q = {};
+        vid.addEventListener('timeupdate', function () {
+          var d = vid.duration || 0;
+          if (!d) return;
+          var p = vid.currentTime / d;
+          [0.25, 0.5, 0.9].forEach(function (k) {
+            if (p >= k && !q[k]) { q[k] = 1; goal('video_' + Math.round(k * 100)); }
+          });
+        });
+      }
     })();
   </script>
 </body>
