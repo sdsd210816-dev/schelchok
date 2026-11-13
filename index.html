@@ -610,6 +610,17 @@
       align-items: center;
     }
 
+    /* фото масла вертикальное (снято боком, EXIF 8) — держим кадр в разумной высоте */
+    .oil .media img {
+      max-height: 620px;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    @media (max-width: 900px) {
+      .oil .media img { max-height: none; }
+    }
+
     .recipe {
       display: flex;
       flex-wrap: wrap;
