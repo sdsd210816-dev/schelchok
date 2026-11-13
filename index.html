@@ -1107,6 +1107,17 @@
       #pixel-canvas { display: none; }
     }
   </style>
+<!-- Yandex.Metrika counter (счётчик «Щелчок — лендинг GitHub», ID 114236998) -->
+<script type="text/javascript">
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+  ym(114236998, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/114236998" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
   <header class="topbar">
@@ -1734,6 +1745,29 @@
         window.addEventListener('load', resize);
       }
       draw();
+    })();
+  </script>
+
+  <!-- Цели Метрики: звонок и переход в ВК считаются отдельно -->
+  <script>
+    (function () {
+      var ID = 114236998;
+      function goal(name) {
+        try { if (typeof ym === 'function') ym(ID, 'reachGoal', name); } catch (e) {}
+      }
+      document.addEventListener('click', function (e) {
+        var t = e.target;
+        var tel = t.closest ? t.closest('a[href^="tel:"]') : null;
+        if (tel) goal('click_phone');
+        var vk = t.closest ? t.closest('a[href*="vk.com"]') : null;
+        if (vk) goal('click_vk');
+      }, true);
+      // клик по ссылке на карте/мессенджере Telegram, если появится
+      document.addEventListener('click', function (e) {
+        var t = e.target;
+        var tg = t.closest ? t.closest('a[href*="t.me/"]') : null;
+        if (tg) goal('click_tg');
+      }, true);
     })();
   </script>
 </body>
